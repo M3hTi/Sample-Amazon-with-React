@@ -1,9 +1,11 @@
+import Carousel from "./Carousel";
+
 function Body() {
-    return (
-        <div className="app">
-            
-        </div>
-    )
+  return (
+    <div className="app">
+      <Carousel />
+    </div>
+  );
 }
 
-export default Body
+export default Body;
