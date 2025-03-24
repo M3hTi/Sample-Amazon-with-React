@@ -60,6 +60,10 @@ header {
   }
 
   @scope (.header-right) {
+    .cart {
+      position: relative;
+      font-size: 24px;
+    }
     .cart-count {
       position: absolute;
       top: -8px;
@@ -97,7 +101,67 @@ header {
   }
 }
 
-.cart {
+.app {
+  width: 85%;
+  background-color: #333;
+  margin: 0 auto;
+}
+
+.hero {
   position: relative;
-  font-size: 24px;
+  height: 300px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  background: rgb(245, 245, 245);
+}
+
+@scope (.hero) {
+  .carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  @scope (.carousel-container) {
+    a {
+      width: 100%;
+      position: absolute;
+      height: 100%;
+      display: block;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px;
+    background: rgba(255, 255, 255, 0.8);
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+
+  .prev-btn {
+    left: 20px;
+  }
+
+  .next-btn {
+    right: 20px;
+  }
 }
