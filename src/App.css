@@ -103,7 +103,7 @@ header {
 
 .app {
   width: 85%;
-  background-color: #333;
+  /* background-color: #333; */
   margin: 0 auto;
 }
 
@@ -163,5 +163,121 @@ header {
 
   .next-btn {
     right: 20px;
+  }
+}
+
+.products-grid {
+  /* max-width: 1200px; */
+  display: grid;
+  /* background-color: red; */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin: 0px auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+@scope (.products-grid) {
+  .product-card {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s;
+  }
+
+  @scope (.product-card) {
+    .product-image {
+      width: 100%;
+      height: 200px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+    }
+
+    &:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 10px 0px;
+    }
+
+    @scope (.product-info) {
+      .product-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: rgb(15, 17, 17);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-wrap: balance;
+      }
+
+      .prime {
+        color: rgb(0, 168, 225);
+        font-size: 4rem;
+      }
+
+      .quantity-selector {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      @scope (.quantity-selector) {
+        .quantity-select {
+          background-color: rgb(240, 242, 242);
+          cursor: pointer;
+          font-size: 14px;
+          min-width: 60px;
+          padding: 4px 8px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(221, 221, 221);
+          border-image: initial;
+          border-radius: 8px;
+          outline: none;
+          transition: 0.2s;
+        }
+      }
+
+      .buy-button {
+        margin-top: 15px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        color: rgb(17, 17, 17);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+        padding: 8px 16px;
+        background: linear-gradient(rgb(247, 223, 165), rgb(240, 193, 75));
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(168, 135, 52);
+        border-image: initial;
+        border-radius: 4px;
+        transition: 0.2s;
+      }
+    }
   }
 }
