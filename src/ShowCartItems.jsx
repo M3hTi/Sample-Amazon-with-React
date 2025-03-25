@@ -12,7 +12,7 @@ function ShowCartItems({ cartItems }) {
 function CartItem({ itemObj }) {
   console.log(itemObj);
   const { image, name, priceCents, quantity } = itemObj;
-  const price = priceCents / 100;
+  const price = (priceCents * quantity) / 100;
   return (
     <div className="product-card">
       <div className="product-image">
