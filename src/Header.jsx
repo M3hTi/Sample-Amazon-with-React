@@ -10,8 +10,10 @@ function Header({ cartItems, query, setQuery }) {
         <div className="location">
           <Icon icon={<FaLocationDot />} />
           <NavItem>
-            <span>Deliver to</span>
-            <h3>United States</h3>
+            <a href="#" className="clean-links">
+              <span>Deliver to</span>
+              <h3>United States</h3>
+            </a>
           </NavItem>
         </div>
       </div>
@@ -20,12 +22,16 @@ function Header({ cartItems, query, setQuery }) {
       </div>
       <div className="header-right">
         <NavItem className="nav-item">
-          <span>Hello, Sign in</span>
-          <h3>Accounts & Lists</h3>
+          <a href="#" className="clean-links">
+            <span>Hello, Sign in</span>
+            <h3>Accounts & Lists</h3>
+          </a>
         </NavItem>
         <NavItem className="nav-item">
-          <span>Returns</span>
-          <h3>& Orders</h3>
+          <a href="#" className="clean-links">
+            <span>Returns</span>
+            <h3>& Orders</h3>
+          </a>
         </NavItem>
         <div className="cart">
           <Icon icon={<FaShoppingCart />} />
