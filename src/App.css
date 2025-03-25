@@ -75,6 +75,11 @@ header {
       border-radius: 50%;
     }
   }
+
+  .clean-links {
+    text-decoration: none;
+    color: rgb(204, 204, 204);
+  }
 }
 
 @scope (.logo) {
