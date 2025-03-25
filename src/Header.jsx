@@ -40,13 +40,13 @@ function Logo() {
   return (
     <div className="logo">
       <a href="#">
-        <img src="/public/Logo.png" alt="" />
+        <img src="/public/logo.png" alt="" />
       </a>
     </div>
   );
 }
 
-function Icon({ icon = null }) {
+export function Icon({ icon = null }) {
   return <span style={{ cursor: "pointer" }}>{icon}</span>;
 }
 
