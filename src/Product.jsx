@@ -4,10 +4,24 @@ import { SiAmazonprime } from "react-icons/si";
 import { Icon } from "./Header";
 import { useState } from "react";
 
-function Product({ productObj }) {
+function Product({ productObj, onAdd }) {
   const { image, name, priceCents } = productObj;
 
   const [selectValue, setSelectValue] = useState(1);
+  const [userRating, setUserRating] = useState(0);
+
+  function handleBuy() {
+    // console.log(productObj)
+    const newItem = {
+      ...productObj,
+      quantity: selectValue,
+      rating: {
+        stars: userRating,
+      },
+    };
+
+    onAdd(newItem);
+  }
 
   return (
     <div className="product-card">
@@ -17,7 +31,11 @@ function Product({ productObj }) {
       <div className="product-info">
         <h3 className="product-title">{name}</h3>
         <div className="rating">
-          <StarRating maxRate={5} color="rgb(254, 189, 105)" />
+          <StarRating
+            maxRate={5}
+            color="rgb(254, 189, 105)"
+            onSetRating={setUserRating}
+          />
         </div>
         <div className="price">${(priceCents / 100).toFixed(2)}</div>
         <div className="prime">
@@ -36,7 +54,9 @@ function Product({ productObj }) {
             ))}
           </select>
         </div>
-        <button className="buy-button">Buy</button>
+        <button className="buy-button" onClick={handleBuy}>
+          Buy
+        </button>
       </div>
     </div>
   );
