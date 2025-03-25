@@ -2,7 +2,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 
-function Header() {
+function Header({ cartItems }) {
   return (
     <header>
       <div className="header-left">
@@ -29,7 +29,7 @@ function Header() {
         </NavItem>
         <div className="cart">
           <Icon icon={<FaShoppingCart />} />
-          <span className="cart-count">X</span>
+          <span className="cart-count">{cartItems.length}</span>
         </div>
       </div>
     </header>
