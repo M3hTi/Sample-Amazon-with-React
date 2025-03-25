@@ -63,7 +63,7 @@ export function Icon({ icon = null, cartItems = null }) {
         {icon}
       </span>
       {isOpen && cartItems?.length > 0 && (
-        <ShowCartItems cartItems={cartItems} />
+        <ShowCartItems cartItems={cartItems} setIsOpen={setIsOpen} />
       )}
       {isOpen && cartItems?.length === 0 && (
         <div className="cart-container">

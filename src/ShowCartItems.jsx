@@ -1,5 +1,17 @@
-function ShowCartItems({ cartItems }) {
+import { useEffect } from "react";
+
+function ShowCartItems({ cartItems, setIsOpen }) {
   //   console.log(cartItems);
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown);
+
+    () => document.removeEventListener("keydown", handleKeyDown);
+  }, [setIsOpen]);
   return (
     <div className="cart-container">
       {cartItems.map((item) => (
