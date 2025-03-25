@@ -2,7 +2,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 
-function Header({ cartItems }) {
+function Header({ cartItems, query, setQuery }) {
   return (
     <header>
       <div className="header-left">
@@ -16,7 +16,7 @@ function Header({ cartItems }) {
         </div>
       </div>
       <div className="header-middle">
-        <Search />
+        <Search query={query} setQuery={setQuery} />
       </div>
       <div className="header-right">
         <NavItem className="nav-item">
@@ -54,10 +54,15 @@ function NavItem({ children, className = null }) {
   return <div className={className}>{children}</div>;
 }
 
-function Search() {
+function Search({ query, setQuery }) {
   return (
     <>
-      <input type="text" placeholder="search for a unique product" />
+      <input
+        type="text"
+        placeholder="search for a unique product"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
       <button>
         <Icon icon={<FaSearch />} />
       </button>
