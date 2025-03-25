@@ -1,9 +1,13 @@
+import StarRating from "./StarRating";
 import { SiAmazonprime } from "react-icons/si";
 
 import { Icon } from "./Header";
+import { useState } from "react";
 
 function Product({ productObj }) {
   const { image, name, priceCents } = productObj;
+
+  const [selectValue, setSelectValue] = useState(1);
 
   return (
     <div className="product-card">
@@ -12,14 +16,21 @@ function Product({ productObj }) {
       </div>
       <div className="product-info">
         <h3 className="product-title">{name}</h3>
-        <div className="rating"></div>
+        <div className="rating">
+          <StarRating maxRate={5} color="rgb(254, 189, 105)" />
+        </div>
         <div className="price">${(priceCents / 100).toFixed(2)}</div>
         <div className="prime">
           <Icon icon={<SiAmazonprime />} />
         </div>
         <div className="quantity-selector">
           <label htmlFor="quantity">Qty:</label>
-          <select id="quantity" className="quantity-select">
+          <select
+            id="quantity"
+            className="quantity-select"
+            value={selectValue}
+            onChange={(e) => setSelectValue(Number(e.target.value))}
+          >
             {Array.from({ length: 5 }, (_, i) => (
               <option value={i + 1}>{i + 1}</option>
             ))}
