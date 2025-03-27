@@ -23,9 +23,15 @@ function ShowCartItems({ cartItems, setIsOpen, onDelete }) {
 }
 
 function CartItem({ itemObj, onDelete }) {
-  console.log(itemObj);
+  // console.log(itemObj);
+  const [isEditingQuantity, setIsEditingQuantity] = useState(false);
+
   const { image, name, priceCents, quantity } = itemObj;
   const price = (priceCents * quantity) / 100;
+
+  function editProduct() {
+    setIsEditingQuantity((s) => !s);
+  }
 
   return (
     <div className="product-card">
@@ -43,7 +49,30 @@ function CartItem({ itemObj, onDelete }) {
         >
           <div>
             <p>price: ${price}</p>
-            <p>Quantity: {quantity}</p>
+            <p>
+              <span style={{ marginRight: "4px" }}>
+                Quantity:
+                {isEditingQuantity ? (
+                  <input type="number" style={{ width: "40px" }} />
+                ) : (
+                  quantity
+                )}
+              </span>
+              <span>
+                <button
+                  style={{
+                    border: "none",
+                    backgroundColor: "#58c4dc",
+                    padding: "4px 8px",
+                    borderRadius: "15px",
+                    cursor: "pointer",
+                  }}
+                  onClick={editProduct}
+                >
+                  {isEditingQuantity ? "Save" : "Edit QTY"}
+                </button>
+              </span>
+            </p>
           </div>
           <div>
             <button
