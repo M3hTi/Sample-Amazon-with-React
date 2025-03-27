@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import ShowCartItems from "./ShowCartItems";
 
-function Header({ cartItems, query, setQuery, onDelete }) {
+function Header({ cartItems, query, setQuery, onDelete, onUpdate }) {
   return (
     <header>
       <div className="header-left">
@@ -41,6 +41,7 @@ function Header({ cartItems, query, setQuery, onDelete }) {
             icon={<FaShoppingCart />}
             cartItems={cartItems}
             onDelete={onDelete}
+            onUpdate={onUpdate}
           />
           <span className="cart-count">{cartItems.length}</span>
         </div>
@@ -59,7 +60,12 @@ function Logo() {
   );
 }
 
-export function Icon({ icon = null, cartItems = null, onDelete = undefined }) {
+export function Icon({
+  icon = null,
+  cartItems = null,
+  onDelete = undefined,
+  onUpdate = undefined,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -71,6 +77,7 @@ export function Icon({ icon = null, cartItems = null, onDelete = undefined }) {
           cartItems={cartItems}
           setIsOpen={setIsOpen}
           onDelete={onDelete}
+          onUpdate={onUpdate}
         />
       )}
       {isOpen && cartItems?.length === 0 && (
