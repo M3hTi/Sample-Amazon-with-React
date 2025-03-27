@@ -11,7 +11,7 @@ function ShowCartItems({ cartItems, setIsOpen, onDelete, onUpdate }) {
     }
     document.addEventListener("keydown", handleKeyDown);
 
-    () => document.removeEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [setIsOpen]);
   return (
     <div className="cart-container">
