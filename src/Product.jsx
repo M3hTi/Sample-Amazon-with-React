@@ -2,25 +2,43 @@ import StarRating from "./StarRating";
 import { SiAmazonprime } from "react-icons/si";
 
 import { Icon } from "./Header";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function Product({ productObj, onAdd }) {
   const { image, name, priceCents } = productObj;
 
   const [selectValue, setSelectValue] = useState(1);
   const [userRating, setUserRating] = useState(0);
+  const ratingCount = useRef(0);
+  const [displayRating, setDisplayRating] = useState({
+    count: 0,
+    average: 0,
+    total: 0,
+  });
 
   function handleBuy() {
-    // console.log(productObj)
+    ratingCount.current += 1;
+
+    if (userRating > 0) {
+      const newTotal = displayRating.total + userRating;
+      const newCount = displayRating.count + 1;
+      setDisplayRating({
+        count: newCount,
+        total: newTotal,
+        average: (newTotal / newCount).toFixed(1),
+      });
+    }
+
     const newItem = {
       ...productObj,
       quantity: selectValue,
       rating: {
         stars: userRating,
+        count: ratingCount.current,
       },
     };
 
-    onAdd(newItem);
+    onAdd(newItem, selectValue);
   }
 
   return (
@@ -36,6 +54,12 @@ function Product({ productObj, onAdd }) {
             color="rgb(254, 189, 105)"
             onSetRating={setUserRating}
           />
+          {displayRating.count > 0 && (
+            <div className="rating-stats">
+              <span>Average: {displayRating.average} ★</span>
+              <span>({displayRating.count} ratings)</span>
+            </div>
+          )}
         </div>
         <div className="price">${(priceCents / 100).toFixed(2)}</div>
         <div className="prime">
