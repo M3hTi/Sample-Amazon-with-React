@@ -1,12 +1,67 @@
-# React + Vite
+# Amazon Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that simulates the core shopping experience of Amazon, built with React and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Product Catalog:** Display products with images, titles, and prices
+- **Star Ratings:** Allow users to rate products and view average ratings
+- **Shopping Cart:** Add products to cart with quantity selection
+- **Cart Management:** Edit quantities or remove items from cart
+- **Search Functionality:** Filter products by name
+- **Prime Membership Indicator:** Display Prime status for products
+- **Modern UI:** Amazon-inspired user interface
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite 6
+- React Icons
+- CSS for styling
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version 18 or higher recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies
+
+```bash
+npm install
+```
+
+### Development
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+### Build for Production
+
+Create a production build:
+
+```bash
+npm run build
+npm run preview
+```
+
+## Project Structure
+
+- `src/App.jsx`: Main application component with state management
+- `src/Header.jsx`: Navigation bar with logo, search, and cart
+- `src/Product.jsx`: Individual product display with buy functionality
+- `src/ShowCartItems.jsx`: Cart items display and management
+- `src/StarRating.jsx`: Reusable star rating component
+- `src/Carousel.jsx`: Product image carousel
+- `src/hooks/`: Custom React hooks
+
+## License
+
+MIT
