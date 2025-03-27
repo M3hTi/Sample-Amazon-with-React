@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 
-function ShowCartItems({ cartItems, setIsOpen }) {
+function ShowCartItems({ cartItems, setIsOpen, onDelete }) {
   //   console.log(cartItems);
-  const [items, setItems] = useState(cartItems)
-
-  function handleDeleteProduct(product) {
-    // console.log(product);
-    setItems(items=> items.filter(item => item.id !== product.id ))
-  }
 
   useEffect(() => {
     function handleKeyDown(e) {
@@ -21,8 +15,8 @@ function ShowCartItems({ cartItems, setIsOpen }) {
   }, [setIsOpen]);
   return (
     <div className="cart-container">
-      {items.map((item) => (
-        <CartItem key={item.id} itemObj={item} onDelete={handleDeleteProduct} />
+      {cartItems.map((item) => (
+        <CartItem key={item.id} itemObj={item} onDelete={onDelete} />
       ))}
     </div>
   );
@@ -32,6 +26,7 @@ function CartItem({ itemObj, onDelete }) {
   console.log(itemObj);
   const { image, name, priceCents, quantity } = itemObj;
   const price = (priceCents * quantity) / 100;
+
   return (
     <div className="product-card">
       <div className="product-image">

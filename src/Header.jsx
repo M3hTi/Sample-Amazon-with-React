@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import ShowCartItems from "./ShowCartItems";
 
-function Header({ cartItems, query, setQuery }) {
+function Header({ cartItems, query, setQuery, onDelete }) {
   return (
     <header>
       <div className="header-left">
@@ -37,7 +37,11 @@ function Header({ cartItems, query, setQuery }) {
           </a>
         </NavItem>
         <div className="cart">
-          <Icon icon={<FaShoppingCart />} cartItems={cartItems} />
+          <Icon
+            icon={<FaShoppingCart />}
+            cartItems={cartItems}
+            onDelete={onDelete}
+          />
           <span className="cart-count">{cartItems.length}</span>
         </div>
       </div>
@@ -55,7 +59,7 @@ function Logo() {
   );
 }
 
-export function Icon({ icon = null, cartItems = null }) {
+export function Icon({ icon = null, cartItems = null, onDelete = undefined }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -63,7 +67,11 @@ export function Icon({ icon = null, cartItems = null }) {
         {icon}
       </span>
       {isOpen && cartItems?.length > 0 && (
-        <ShowCartItems cartItems={cartItems} setIsOpen={setIsOpen} />
+        <ShowCartItems
+          cartItems={cartItems}
+          setIsOpen={setIsOpen}
+          onDelete={onDelete}
+        />
       )}
       {isOpen && cartItems?.length === 0 && (
         <div className="cart-container">
