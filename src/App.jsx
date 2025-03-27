@@ -20,9 +20,20 @@ function App() {
     setShoppingCart((s) => [...s, item]);
   }
 
+  function handleDeleteProduct(item) {
+    setShoppingCart((shoppingCart) =>
+      shoppingCart.filter((product) => product.id !== item.id)
+    );
+  }
+
   return (
     <>
-      <Header cartItems={shoppingCart} query={query} setQuery={setQuery} />
+      <Header
+        cartItems={shoppingCart}
+        query={query}
+        setQuery={setQuery}
+        onDelete={handleDeleteProduct}
+      />
 
       <Body
         products={matchProducts}
