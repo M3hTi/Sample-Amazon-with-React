@@ -26,6 +26,19 @@ function App() {
     );
   }
 
+  function handleUpdateQuantity(product, number) {
+    setShoppingCart((shoppingCart) =>
+      shoppingCart.map((item) =>
+        item.id === product.id
+          ? {
+              ...item,
+              quantity: number,
+            }
+          : item
+      )
+    );
+  }
+
   return (
     <>
       <Header
@@ -33,6 +46,7 @@ function App() {
         query={query}
         setQuery={setQuery}
         onDelete={handleDeleteProduct}
+        onUpdate={handleUpdateQuantity}
       />
 
       <Body
