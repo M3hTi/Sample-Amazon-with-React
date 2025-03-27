@@ -3,7 +3,7 @@ import Body from "./Body";
 import { useProducts } from "./hooks/useProducts";
 
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const { products, isLoading, error } = useProducts();
@@ -15,9 +15,24 @@ function App() {
   );
   // console.log(matchProducts);
 
-  function handleAddToCart(item) {
+  function handleAddToCart(item, value) {
     // console.log(item);
-    setShoppingCart((s) => [...s, item]);
+    setShoppingCart((shoppingCart) => {
+      const isItemExist = shoppingCart.some(
+        (cartItem) => cartItem.id === item.id
+      );
+      console.log(isItemExist);
+
+      if (isItemExist) {
+        // Update the quantity of the existing item
+        return shoppingCart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + value }
+            : cartItem
+        );
+      }
+      return [...shoppingCart, item];
+    });
   }
 
   function handleDeleteProduct(item) {
