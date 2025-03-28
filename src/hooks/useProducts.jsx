@@ -9,7 +9,7 @@ export function useProducts() {
       try {
         setIsLoading(true);
         setError("");
-        const res = await fetch(`http://localhost:5000/products`);
+        const res = await fetch(`http://localhost:8000/products`);
         if (!res.ok) throw new Error(`Error: ${res.statusText}`);
 
         const data = await res.json();
