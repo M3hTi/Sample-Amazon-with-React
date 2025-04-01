@@ -3,15 +3,15 @@ import ProductDisplay from "./ProductDisplay";
 import Loader from "./Loader";
 import Error from "./Error";
 
-function Body({ products, isLoading, error, onAdd }) {
+function Body({ products, status, onAdd }) {
   return (
     <div className="app">
       <Carousel />
-      {isLoading && <Loader />}
-      {!isLoading && products.length > 0 && (
+      {status === "loading" && <Loader />}
+      {status === "success" && products.length > 0 && (
         <ProductDisplay products={products} onAdd={onAdd} />
       )}
-      {error && <Error msg={error} />}
+      {status === "error" && <Error  />}
     </div>
   );
 }

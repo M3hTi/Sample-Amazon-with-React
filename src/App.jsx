@@ -6,7 +6,7 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const { products, isLoading, error } = useProducts();
+  const { products, status } = useProducts();
   const [shoppingCart, setShoppingCart] = useState([]);
   const [query, setQuery] = useState("");
 
@@ -66,8 +66,7 @@ function App() {
 
       <Body
         products={matchProducts}
-        isLoading={isLoading}
-        error={error}
+        status={status}
         onAdd={handleAddToCart}
       />
     </>

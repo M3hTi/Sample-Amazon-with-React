@@ -1,4 +1,4 @@
-function Error({ msg }) {
+function Error() {
   return (
     <div
       style={{
@@ -7,7 +7,7 @@ function Error({ msg }) {
         justifyContent: "center",
       }}
     >
-      <p style={{ color: "red" }}>{msg}</p>
+      <p style={{ color: "red" }}>💥 Failed to fetch the Data</p>
     </div>
   );
 }
