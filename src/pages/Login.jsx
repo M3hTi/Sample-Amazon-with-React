@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const myRef = useRef();
+
+  useEffect(() => {
+    // console.log(myRef.current);
+    myRef.current.focus();
+
+  }, []);
   return (
     <div>
       <Header />
@@ -17,6 +25,7 @@ function Login() {
                 type="text"
                 id="email"
                 name="email"
+                ref={myRef}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
