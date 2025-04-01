@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Header from "../components/Header";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div>
       <Header />
@@ -10,11 +13,23 @@ function Login() {
           <form className="login-form">
             <div className="form-group">
               <label htmlFor="email">Email or mobile phone number</label>
-              <input type="text" id="email" name="email" />
+              <input
+                type="text"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" name="password" />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <button type="submit" className="login-button">
               Sign in
