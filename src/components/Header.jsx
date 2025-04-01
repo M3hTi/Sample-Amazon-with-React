@@ -4,8 +4,15 @@ import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 
 import ShowCartItems from "./ShowCartItems";
+import { NavLink } from "react-router-dom";
 
-function Header({ cartItems, query, setQuery, onDelete, onUpdate }) {
+function Header({
+  cartItems = [],
+  query = "",
+  setQuery = () => {},
+  onDelete = () => {},
+  onUpdate = () => {},
+}) {
   return (
     <header>
       <div className="header-left">
@@ -13,7 +20,7 @@ function Header({ cartItems, query, setQuery, onDelete, onUpdate }) {
         <div className="location">
           <Icon icon={<FaLocationDot />} />
           <NavItem>
-            <a href="#" className="clean-links">
+            <a href="" className="clean-links">
               <span>Deliver to</span>
               <h3>United States</h3>
             </a>
@@ -25,16 +32,16 @@ function Header({ cartItems, query, setQuery, onDelete, onUpdate }) {
       </div>
       <div className="header-right">
         <NavItem className="nav-item">
-          <a href="#" className="clean-links">
+          <NavLink to="/login" className="clean-links">
             <span>Hello, Sign in</span>
             <h3>Accounts & Lists</h3>
-          </a>
+          </NavLink>
         </NavItem>
         <NavItem className="nav-item">
-          <a href="#" className="clean-links">
+          <NavLink to="/" className="clean-links">
             <span>Returns</span>
             <h3>& Orders</h3>
-          </a>
+          </NavLink>
         </NavItem>
         <div className="cart">
           <Icon
@@ -53,9 +60,9 @@ function Header({ cartItems, query, setQuery, onDelete, onUpdate }) {
 function Logo() {
   return (
     <div className="logo">
-      <a href="#">
-        <img src="/public/logo.png" alt="" />
-      </a>
+      <NavLink to="/">
+        <img src="../../public/logo.png" alt="logo" />
+      </NavLink>
     </div>
   );
 }
