@@ -20,7 +20,6 @@ function HomePage() {
       const isItemExist = shoppingCart.some(
         (cartItem) => cartItem.id === item.id
       );
-      console.log(isItemExist);
 
       if (isItemExist) {
         // Update the quantity of the existing item
