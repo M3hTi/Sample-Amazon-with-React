@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
+import { NavLink } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -53,7 +54,7 @@ function Login() {
             <span>New to Amazon?</span>
           </div>
           <button className="create-account-button">
-            Create your Amazon account
+            <NavLink to='*'>Create your Amazon account</NavLink>
           </button>
         </div>
       </div>

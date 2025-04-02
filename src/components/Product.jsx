@@ -3,6 +3,7 @@ import { SiAmazonprime } from "react-icons/si";
 
 import { Icon } from "./Header";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Product({ productObj, onAdd }) {
   const { image, name, priceCents } = productObj;
@@ -78,9 +79,16 @@ function Product({ productObj, onAdd }) {
             ))}
           </select>
         </div>
-        <button className="buy-button" onClick={handleBuy}>
-          Buy
-        </button>
+        <div className="btn-container">
+          <button className="preview-btn">
+            <Link to="/product" state={{ product: productObj }}>
+              preview product
+            </Link>
+          </button>
+          <button className="buy-button" onClick={handleBuy}>
+            Buy
+          </button>
+        </div>
       </div>
     </div>
   );
