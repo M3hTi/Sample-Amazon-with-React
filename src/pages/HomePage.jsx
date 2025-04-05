@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 
 import Header from "../components/Header";
 import Body from "../components/Body";
+import Theme from "../components/Theme";
 
 export const ProductsContext = createContext();
 
@@ -69,6 +70,7 @@ function HomePage({ products, status }) {
 
         <Body status={status} />
       </ProductsContext.Provider>
+      <Theme />
     </>
   );
 }
