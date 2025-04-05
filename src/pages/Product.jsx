@@ -1,11 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 
-function Product() {
-  const location = useLocation();
-  const {
-    product: { image, name, priceCents },
-  } = location.state;
+function Product({ products }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const matchProduct = products.find((product) => product.id === id);
+
+  const { image, name, priceCents } = matchProduct;
 
   console.log(image, name, priceCents);
 
@@ -28,9 +30,7 @@ function Product() {
             </span>
           </div>
           <div>
-            <button>
-              <Link to="/">Return To Products</Link>
-            </button>
+            <button onClick={() => navigate(-1)}>Return To Products</button>
           </div>
         </div>
       </div>
