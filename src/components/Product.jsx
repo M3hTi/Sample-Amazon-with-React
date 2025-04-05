@@ -2,10 +2,15 @@ import StarRating from "./StarRating";
 import { SiAmazonprime } from "react-icons/si";
 
 import { Icon } from "./Header";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-function Product({ productObj, onAdd }) {
+import { ProductsContext } from "../pages/HomePage";
+
+function Product({ productObj }) {
+
+  const {onAdd}  = useContext(ProductsContext)
+
   const { image, name, priceCents, id } = productObj;
 
   const [selectValue, setSelectValue] = useState(1);

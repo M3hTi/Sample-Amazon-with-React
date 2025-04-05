@@ -1,11 +1,11 @@
-import { useState } from "react";
-
+import { createContext, useState } from "react";
 
 import Header from "../components/Header";
 import Body from "../components/Body";
 
-function HomePage({products, status}) {
-  
+export const ProductsContext = createContext();
+
+function HomePage({ products, status }) {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [query, setQuery] = useState("");
 
@@ -53,15 +53,22 @@ function HomePage({products, status}) {
   }
   return (
     <>
-      <Header
-        cartItems={shoppingCart}
-        query={query}
-        setQuery={setQuery}
-        onDelete={handleDeleteProduct}
-        onUpdate={handleUpdateQuantity}
-      />
+      <ProductsContext.Provider
+        value={{
+          products: matchProducts,
+          onAdd: handleAddToCart,
+        }}
+      >
+        <Header
+          cartItems={shoppingCart}
+          query={query}
+          setQuery={setQuery}
+          onDelete={handleDeleteProduct}
+          onUpdate={handleUpdateQuantity}
+        />
 
-      <Body products={matchProducts} status={status} onAdd={handleAddToCart} />
+        <Body status={status} />
+      </ProductsContext.Provider>
     </>
   );
 }
