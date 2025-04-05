@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 import { NavLink } from "react-router-dom";
+import Theme from "../components/Theme";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,7 +12,6 @@ function Login() {
   useEffect(() => {
     // console.log(myRef.current);
     myRef.current.focus();
-
   }, []);
   return (
     <div>
@@ -54,10 +54,11 @@ function Login() {
             <span>New to Amazon?</span>
           </div>
           <button className="create-account-button">
-            <NavLink to='*'>Create your Amazon account</NavLink>
+            <NavLink to="*">Create your Amazon account</NavLink>
           </button>
         </div>
       </div>
+      <Theme />
     </div>
   );
 }

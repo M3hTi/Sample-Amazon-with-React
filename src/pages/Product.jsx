@@ -1,5 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
+import Theme from "../components/Theme";
 
 function Product({ products }) {
   const { id } = useParams();
@@ -34,6 +35,7 @@ function Product({ products }) {
           </div>
         </div>
       </div>
+      <Theme />
     </>
   );
 }
