@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useProducts } from "../hooks/useProducts";
+
 
 import Header from "../components/Header";
 import Body from "../components/Body";
 
-function HomePage() {
-  const { products, status } = useProducts();
+
+function HomePage({products, status}) {
+  
   const [shoppingCart, setShoppingCart] = useState([]);
   const [query, setQuery] = useState("");
 

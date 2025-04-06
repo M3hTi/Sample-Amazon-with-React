@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Product({ productObj, onAdd }) {
-  const { image, name, priceCents } = productObj;
+  const { image, name, priceCents, id } = productObj;
 
   const [selectValue, setSelectValue] = useState(1);
   const [userRating, setUserRating] = useState(0);
@@ -81,9 +81,7 @@ function Product({ productObj, onAdd }) {
         </div>
         <div className="btn-container">
           <button className="preview-btn">
-            <Link to="/product" state={{ product: productObj }}>
-              preview product
-            </Link>
+            <Link to={`/product/${id}`}>product preview</Link>
           </button>
           <button className="buy-button" onClick={handleBuy}>
             Buy

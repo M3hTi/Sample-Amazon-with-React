@@ -2,6 +2,7 @@ import Carousel from "./Carousel";
 import ProductDisplay from "./ProductDisplay";
 import Loader from "./Loader";
 import Error from "./Error";
+import Theme from "./Theme";
 
 function Body({ products, status, onAdd }) {
   return (
@@ -12,6 +13,7 @@ function Body({ products, status, onAdd }) {
         <ProductDisplay products={products} onAdd={onAdd} />
       )}
       {status === "error" && <Error  />}
+      <Theme />
     </div>
   );
 }
